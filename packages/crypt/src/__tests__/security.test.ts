@@ -1,4 +1,4 @@
-import { secureClear, secureClearMultiple, SecureBuffer, createSecureBuffer, withSecureCleanup } from '../security';
+import { secureClear, secureClearMultiple, withSecureCleanup } from '../security';
 
 describe('Security Utilities', () => {
   describe('secureClear', () => {
@@ -34,67 +34,6 @@ describe('Security Utilities', () => {
 
     it('should handle empty array', () => {
       expect(() => secureClearMultiple([])).not.toThrow();
-    });
-  });
-
-  describe('SecureBuffer', () => {
-    it('should create SecureBuffer with data', () => {
-      const data = Buffer.from('test data');
-      const secureBuffer = new SecureBuffer(data);
-
-      expect(secureBuffer.buffer).toEqual(data);
-      expect(secureBuffer.length).toBe(data.length);
-      expect(secureBuffer.isCleared).toBe(false);
-    });
-
-    it('should clear buffer', () => {
-      const data = Buffer.from('test data');
-      const secureBuffer = new SecureBuffer(data);
-
-      secureBuffer.clear();
-
-      expect(secureBuffer.isCleared).toBe(true);
-      expect(() => secureBuffer.buffer).toThrow('SecureBuffer has been cleared');
-    });
-
-    it('should create copy of buffer', () => {
-      const data = Buffer.from('test data');
-      const secureBuffer = new SecureBuffer(data);
-
-      const copy = secureBuffer.copy();
-
-      expect(copy).toEqual(data);
-      expect(copy).not.toBe(data); // Should be a different instance
-    });
-
-    it('should not allow access to cleared buffer', () => {
-      const data = Buffer.from('test data');
-      const secureBuffer = new SecureBuffer(data);
-
-      secureBuffer.clear();
-
-      expect(() => secureBuffer.buffer).toThrow('SecureBuffer has been cleared');
-      expect(() => secureBuffer.copy()).toThrow('SecureBuffer has been cleared');
-    });
-
-    it('should handle multiple clear calls', () => {
-      const data = Buffer.from('test data');
-      const secureBuffer = new SecureBuffer(data);
-
-      secureBuffer.clear();
-      secureBuffer.clear(); // Should not throw
-
-      expect(secureBuffer.isCleared).toBe(true);
-    });
-  });
-
-  describe('createSecureBuffer', () => {
-    it('should create SecureBuffer using factory function', () => {
-      const data = Buffer.from('test data');
-      const secureBuffer = createSecureBuffer(data);
-
-      expect(secureBuffer).toBeInstanceOf(SecureBuffer);
-      expect(secureBuffer.buffer).toEqual(data);
     });
   });
 

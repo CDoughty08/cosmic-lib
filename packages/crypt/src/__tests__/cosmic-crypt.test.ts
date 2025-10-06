@@ -139,11 +139,12 @@ describe('CosmicCrypt', () => {
 
     it('should handle mixed async/sync roundtrip', async () => {
       const credentials = CosmicCrypt.generateCredentialsSync();
+      const clonedCredentials = cloneCredentials(credentials);
       const originalData = Buffer.from('Mixed roundtrip test');
 
       // Encrypt with sync, decrypt with async
       const encrypted = CosmicCrypt.encryptSync(originalData, credentials);
-      const decrypted = await CosmicCrypt.decrypt(encrypted, credentials.password);
+      const decrypted = await CosmicCrypt.decrypt(encrypted, clonedCredentials.password);
 
       expect(decrypted.equals(originalData)).toBe(true);
     });
