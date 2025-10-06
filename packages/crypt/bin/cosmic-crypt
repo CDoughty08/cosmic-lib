@@ -1,0 +1,6 @@
+#!/usr/bin/env node
+'use strict';
+
+process.title = '@cosmic/crypt';
+
+require('../dist/cli');

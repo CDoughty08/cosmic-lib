@@ -1,0 +1,38 @@
+{
+  "name": "@cosmic/redis-es",
+  "version": "1.0.0",
+  "description": "Entity System for mapping classes to Redis",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "jest",
+    "lint": "eslint",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "redis",
+    "entity",
+    "system",
+    "orm",
+    "mapping",
+    "database"
+  ],
+  "author": "Cosmic Team",
+  "license": "MIT",
+  "dependencies": {
+    "redis": "5.8.3"
+  }
+}

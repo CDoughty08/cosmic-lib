@@ -1,0 +1,37 @@
+{
+  "name": "@cosmic/redis-lock",
+  "version": "1.0.0",
+  "description": "Distributed Redis locks using the Redlock algorithm",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "jest",
+    "lint": "eslint",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "redis",
+    "lock",
+    "distributed",
+    "redlock",
+    "mutex"
+  ],
+  "author": "Cosmic Team",
+  "license": "MIT",
+  "dependencies": {
+    "redis": "5.8.3"
+  }
+}

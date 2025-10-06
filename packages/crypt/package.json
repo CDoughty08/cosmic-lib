@@ -1,0 +1,47 @@
+{
+  "name": "@cosmic/crypt",
+  "version": "1.0.0",
+  "description": "Modern encryption/decryption library with HMAC authentication",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./cli": {
+      "import": "./dist/cli/index.mjs",
+      "require": "./dist/cli/index.js"
+    }
+  },
+  "bin": {
+    "cosmic-crypt": "./dist/cli/index.js",
+    "cosmic-crypt-enhanced": "./dist/cli/enhanced-cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "jest",
+    "lint": "eslint",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "encryption",
+    "decryption",
+    "crypto",
+    "aes",
+    "hmac",
+    "pbkdf2",
+    "security"
+  ],
+  "author": "Cosmic Team",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^14.0.1"
+  }
+}
