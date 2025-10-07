@@ -10,9 +10,14 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "clean": "turbo run clean",
-    "dev": "turbo run dev"
+    "dev": "turbo run dev",
+    "prepare": "husky",
+    "bump-version": "turbo-tools version -d"
   },
   "devDependencies": {
+    "@better-builds/turbo-tools": "7.4.0",
+    "@commitlint/cli": "20.1.0",
+    "@commitlint/config-conventional": "20.0.0",
     "@eslint/eslintrc": "3.3.1",
     "@eslint/js": "9.37.0",
     "@types/jest": "30.0.0",
@@ -23,6 +28,7 @@
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-prettier": "5.5.4",
     "globals": "16.4.0",
+    "husky": "9.1.7",
     "jest": "30.2.0",
     "prettier": "3.6.2",
     "ts-jest": "29.4.4",

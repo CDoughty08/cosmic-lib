@@ -1,4 +1,4 @@
-import { secureClear, secureClearMultiple, withSecureCleanup } from '../security';
+import { secureClear, withSecureCleanup } from '../security';
 
 describe('Security Utilities', () => {
   describe('secureClear', () => {
@@ -19,13 +19,11 @@ describe('Security Utilities', () => {
       expect(() => secureClear(null as unknown as Buffer)).not.toThrow();
       expect(() => secureClear(undefined as unknown as Buffer)).not.toThrow();
     });
-  });
 
-  describe('secureClearMultiple', () => {
     it('should clear multiple buffers', () => {
       const buffers = [Buffer.from('data1'), Buffer.from('data2'), Buffer.from('data3')];
 
-      secureClearMultiple(buffers);
+      secureClear(buffers);
 
       buffers.forEach((buffer) => {
         expect(buffer.every((byte) => byte === 0)).toBe(true);
@@ -33,7 +31,7 @@ describe('Security Utilities', () => {
     });
 
     it('should handle empty array', () => {
-      expect(() => secureClearMultiple([])).not.toThrow();
+      expect(() => secureClear([])).not.toThrow();
     });
   });
 

@@ -10,37 +10,29 @@ import { randomBytesSync } from './crypto';
  * This helps prevent sensitive data from remaining in memory
  * @param buffer - The buffer to clear
  */
-export function secureClear(buffer: Buffer): void {
-  if (!buffer || buffer.length === 0) {
-    return;
-  }
+export function secureClear(buffer: Buffer | Buffer[]): void {
+  const buffers = Array.isArray(buffer) ? buffer : [buffer];
 
-  // Overwrite with random data multiple times
-  buffer.set(randomBytesSync(buffer.length), 0);
-  buffer.set(randomBytesSync(buffer.length), 0);
-  buffer.set(randomBytesSync(buffer.length), 0);
+  buffers.forEach((buffer) => {
+    if (!buffer || buffer.length === 0) {
+      return;
+    }
 
-  // Final overwrite with zeros
-  buffer.fill(0);
+    // Overwrite with random data multiple times
+    buffer.set(randomBytesSync(buffer.length), 0);
+    buffer.set(randomBytesSync(buffer.length), 0);
+    buffer.set(randomBytesSync(buffer.length), 0);
+
+    // Final overwrite with zeros
+    buffer.fill(0);
+  });
 }
 
-/**
- * Securely clear multiple buffers at once
- * @param buffers - Array of buffers to clear
- */
-export function secureClearMultiple(buffers: Buffer[]): void {
-  buffers.forEach(secureClear);
-}
-
-/**
- * Clear sensitive data from memory after use
- * This is a helper function that can be used in try-finally blocks
- */
 export function withSecureCleanup<T>(sensitiveData: Buffer[], operation: () => T): T {
   try {
     return operation();
   } finally {
-    secureClearMultiple(sensitiveData);
+    secureClear(sensitiveData);
   }
 }
 
@@ -48,6 +40,6 @@ export async function withSecureCleanupAsync<T>(sensitiveData: Buffer[], operati
   try {
     return await operation();
   } finally {
-    secureClearMultiple(sensitiveData);
+    secureClear(sensitiveData);
   }
 }
