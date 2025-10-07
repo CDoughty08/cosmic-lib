@@ -12,7 +12,7 @@
     "clean": "turbo run clean",
     "dev": "turbo run dev",
     "prepare": "husky",
-    "bump-version": "turbo-tools version -d"
+    "bump-version": "turbo-tools version"
   },
   "devDependencies": {
     "@better-builds/turbo-tools": "7.4.0",
