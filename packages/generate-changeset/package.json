@@ -1,0 +1,44 @@
+{
+  "name": "@cosmic/generate-changeset",
+  "version": "1.0.0",
+  "description": "Generate changeset utility",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "generate-changeset": "./bin/cli.ts"
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "jest",
+    "lint": "eslint",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "changeset",
+    "generator",
+    "cli",
+    "tool"
+  ],
+  "author": "Cosmic Team",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "14.0.1",
+    "conventional-commits-parser": "5.0.0"
+  },
+  "devDependencies": {
+    "@types/conventional-commits-parser": "5.0.1"
+  }
+}

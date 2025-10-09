@@ -11,11 +11,9 @@
     "format:check": "prettier --check .",
     "clean": "turbo run clean",
     "dev": "turbo run dev",
-    "prepare": "husky",
-    "bump-version": "turbo-tools version"
+    "prepare": "husky"
   },
   "devDependencies": {
-    "@better-builds/turbo-tools": "7.4.0",
     "@commitlint/cli": "20.1.0",
     "@commitlint/config-conventional": "20.0.0",
     "@eslint/eslintrc": "3.3.1",
